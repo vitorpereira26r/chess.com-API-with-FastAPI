@@ -3,6 +3,8 @@ from fastapi import FastAPI
 import requests
 import os
 
+from exceptions import ExceptionHandler, exception_handler
+
 load_dotenv()
 API_URL = os.getenv("CHESS_API_URL")
 
@@ -13,6 +15,9 @@ HEADERS = {
 app = FastAPI()
 
 
+app.add_exception_handler(ExceptionHandler, exception_handler)
+
+
 @app.get("/api/player/{username}")
 async def player(username: str):
     url = f"{API_URL}/pub/player/{username}"
@@ -21,5 +26,5 @@ async def player(username: str):
     if response.status_code == 200:
         data = response.json()
         return data
-    else:
-        return {"error": "Failed to retrieve data"}
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
