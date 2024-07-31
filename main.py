@@ -33,6 +33,18 @@ async def player(username: str):
         raise ExceptionHandler(status_code=404, message=f"User {username} not found")
 
 
+@api_router.get("/player/title/{title}")
+async def title(title: str):
+    url = f"{API_URL}/pub/titled/{title}"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"Title {title} not found")
+
+
 @api_router.get("/player/stats/{username}")
 async def stats(username: str):
     url = f"{API_URL}/pub/player/{username}/stats"
@@ -57,7 +69,19 @@ async def games(username: str):
         raise ExceptionHandler(status_code=404, message=f"User {username} not found")
 
 
-@api_router.get("/player/games-archives/{username}")
+@api_router.get("/player/daily/games/{username}")
+async def daily(username: str):
+    url = f"{API_URL}/pub/player/{username}/games"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
+
+
+@api_router.get("/player/games/archives/{username}")
 async def games_archives(username: str):
     url = f"{API_URL}/pub/player/{username}/games/archives"
     response = requests.get(url, headers=HEADERS)

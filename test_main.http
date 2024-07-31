@@ -5,6 +5,11 @@ Accept: application/json
 
 ###
 
+GET http://127.0.0.1:8000/api/player/title/GM
+Accept: application/json
+
+###
+
 GET http://127.0.0.1:8000/api/player/stats/vitorpereira26
 Accept: application/json
 
@@ -15,7 +20,12 @@ Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8000/api/player/games-archives/vitorpereira26
+GET http://127.0.0.1:8000/api/player/daily/games/vitorpereira26
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/player/games/archives/vitorpereira26
 Accept: application/json
 
 ###
