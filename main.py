@@ -93,4 +93,52 @@ async def games_archives(username: str):
         raise ExceptionHandler(status_code=404, message=f"User {username} not found")
 
 
+@api_router.get("/player/games/{username}/{year}/{month}")
+async def games_year_month(year: str, month: str, username: str):
+    url = f"{API_URL}/pub/player/{username}/games/{year}/{month}"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
+
+
+@api_router.get("/player/clubs/{username}")
+async def clubs(username: str):
+    url = f"{API_URL}/pub/player/{username}/clubs"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
+
+
+@api_router.get("/player/matches/{username}")
+async def matches(username: str):
+    url = f"{API_URL}/pub/player/{username}/matches"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
+
+
+@api_router.get("/player/tournaments/{username}")
+async def matches(username: str):
+    url = f"{API_URL}/pub/player/{username}/tournaments"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 404:
+        raise ExceptionHandler(status_code=404, message=f"User {username} not found")
+
+
 app.include_router(api_router)

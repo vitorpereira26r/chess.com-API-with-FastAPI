@@ -29,3 +29,28 @@ GET http://127.0.0.1:8000/api/player/games/archives/vitorpereira26
 Accept: application/json
 
 ###
+
+GET http://127.0.0.1:8000/api/player/games/vitorpereira26/2024/07
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/player/clubs/vitorpereira26
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/player/matches/vitorpereira26
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/player/tournaments/vitorpereira26
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/club/tourn/vitorpereira26
+Accept: application/json
+
+###
